@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  h1 Welocome to Blog Post 
+  .find_by_id 
+    h2 Find by id 
+    form(action="/find_by_id" method="post")
+      label(for="id") id 
+      input(type="text" name="id")
+      button(type="submit") find 
+  p See all your posts here 
+  div
+      each item in items 
+        p(style='margin-left: 2.5em;padding: 0 7em 2em 0;border-width: 2px; border-color: black; border-style:solid;') 
+          h2 Title :#{item["title"]}
+          p Description :#{item["description"]}
+          p created_at :#{item["created_at"]}
+          p id :#{item["_id"]}
+      p(style='margin-left: 2.5em;padding: 0 7em 2em 0;border-width: 2px; border-color: black; border-style:solid;')
+  .create 
+  form(action="/new_post_page" method="get")
+     button(type="submit") create new post 
+  p 
+  .edit 
+    h2 Update your post here 
+    form(action="/edit_page" method="post")
+      label(for="id") id 
+      input(type="text" name="id")
+      button(type="submit") update 
+  p 
+  .delete 
+  h2 Delete your post here 
+  form(action="/delete_by_id" method="post")
+    label(for="id") id 
+    input(type="text" name="id")
+    button(type="submit") delete 
+
+
+  
